@@ -1,0 +1,55 @@
+DEEPSEEK
+Data as of: 25 September 2026
+Official sources: https://api-docs.deepseek.com/quick_start/pricing , https://api-docs.deepseek.com , https://www.deepseek.com
+
+== OVERVIEW ==
+DeepSeek is a Chinese AI company based in Hangzhou, founded in 2023 and backed by the hedge fund High-Flyer. It became world-famous in January 2025 when its open-weight reasoning model DeepSeek-R1 matched top Western models at a fraction of the training cost.
+DeepSeek is known for releasing open-weight models (anyone can download and self-host them) and for extremely low API prices.
+Consumer access: chat.deepseek.com and mobile apps, free to use.
+Best known for: very cheap API, open-weight models, strong reasoning, maths and coding.
+
+== CURRENT MODELS (API) ==
+1. deepseek-flash (DeepSeek-V4.1-Flash) - fast, very cheap model. Supports JSON output, tool calls, vision (image input) and thinking mode. 1M token context, up to 384K output tokens.
+2. deepseek-v4-pro (DeepSeek-V4-Pro-0813) - more powerful model for harder tasks. Supports JSON output and tool calls, but NO vision. 1M token context, up to 384K output tokens.
+
+== COMPARISON OF DEEPSEEK'S OWN MODELS ==
+- Capability: V4-Pro is stronger for complex reasoning and coding; Flash is faster and cheaper.
+- Vision: only Flash supports image input.
+- Price: V4-Pro is roughly 3-4x the price of Flash.
+- Concurrency limit: Flash 2,500 parallel requests, V4-Pro 500.
+- When to choose: Flash for most apps and vision tasks on a tight budget; V4-Pro for difficult reasoning.
+
+== API PRICING (per 1 million tokens) ==
+| Model | Input (cache hit) | Input (cache miss) | Output |
+| deepseek-flash | $0.003 - $0.006 | $0.15 - $0.30 | $0.60 - $1.20 |
+| deepseek-v4-pro | $0.022 - $0.044 | $0.66 - $1.32 | $1.98 - $3.96 |
+Price range explained: off-peak rates are 50% of peak rates. Peak hours are 01:00-04:00 and 06:00-10:00 UTC, Monday to Friday (excluding Chinese holidays). In India time (IST) peak is 6:30-9:30 AM and 11:30 AM-3:30 PM on weekdays.
+Cache hit = when the same prompt prefix was sent before, input becomes almost free.
+
+== API BASICS ==
+- Get an API key from platform.deepseek.com.
+- The API is OpenAI-compatible: you can use the OpenAI Python SDK and just change base_url and the model name. This makes migrating from OpenAI very easy.
+- Base URL: https://api.deepseek.com
+- Key API features: JSON output, tool/function calling, thinking (reasoning) mode, vision on Flash, context caching (automatic), 1M context.
+- Python example:
+  from openai import OpenAI
+  client = OpenAI(api_key="YOUR_DEEPSEEK_KEY", base_url="https://api.deepseek.com")
+  r = client.chat.completions.create(model="deepseek-flash",
+        messages=[{"role": "user", "content": "Explain RAG in simple words"}])
+  print(r.choices[0].message.content)
+
+== STRENGTHS ==
+- Among the cheapest capable APIs available; cache hits are nearly free.
+- Open-weight models: can be self-hosted for privacy or offline use.
+- OpenAI-compatible API - easy migration.
+- 1M context and very large 384K output limit.
+- Off-peak discount of 50%.
+
+== WEAKNESSES / LIMITATIONS ==
+- Data is processed on servers in China - some companies and governments restrict its use for privacy/compliance reasons.
+- Pro model has no vision support.
+- Fewer extra tools than OpenAI/Google (no native image generation, voice, etc.).
+- Service can be slower during peak demand.
+
+== BEST FOR ==
+Budget-conscious developers and students, high-volume apps, maths/coding/reasoning tasks, teams that want to self-host open-weight models.

@@ -1,0 +1,59 @@
+GROK (xAI)
+Data as of: 25 September 2026
+Official sources: https://docs.x.ai/docs/models , https://docs.x.ai , https://x.ai
+
+== OVERVIEW ==
+Grok is the AI chatbot made by xAI, the AI company founded by Elon Musk in 2023. Grok was launched in November 2023 and is built into the X (formerly Twitter) platform.
+Grok is known for a bold, witty personality, access to real-time information from X posts when search tools are enabled, and strong reasoning and coding.
+Consumer access: grok.com, Grok mobile apps, and inside X. Free usage with limits plus paid tiers (via X Premium / SuperGrok subscriptions).
+Best known for: real-time X/social media data, personality, reasoning, image and video generation (Imagine).
+
+== CURRENT MODELS (API) ==
+1. Grok 4.7 - the flagship model. Handles code and general tasks, agentic tool calling, low hallucinations and configurable reasoning (you can control how much it "thinks"). Context window 500K tokens. Knowledge cutoff: May 2026.
+Specialized APIs:
+2. Voice API - voice agents, text-to-speech and speech-to-text.
+3. Imagine API - image and video generation.
+Note: without search tools enabled, Grok has no knowledge of current events after its training data.
+
+== COMPARISON OF XAI'S OWN MODELS / APIS ==
+- xAI focuses on one main flagship text model (Grok 4.7) with adjustable reasoning, instead of many size tiers.
+- For different jobs you pick the specialized API: Voice API for talking agents, Imagine API for pictures and videos.
+- When to choose: Grok 4.7 for coding, reasoning and agents; Voice API for voice bots; Imagine for media generation.
+
+== API PRICING ==
+| Model / API | Price |
+| Grok 4.7 | $2 input / $6 output per 1M tokens, 500K context |
+| Voice Agent | $0.08 per minute |
+| Text-to-Speech | $15 per 1M characters |
+| Speech-to-Text (batch) | $0.10 per hour |
+| Speech-to-Text (streaming) | $0.20 per hour |
+| Imagine - images | from $0.02 per image |
+| Imagine - videos | from $0.05 per second |
+Note: Grok 4.7 output price ($6/M) is low compared with other flagship models, making it good value for long answers.
+
+== API BASICS ==
+- Get an API key from console.x.ai.
+- The API is compatible with the OpenAI and Anthropic SDKs - change the base URL to https://api.x.ai/v1 and use the Grok model name. xAI also has its own SDK.
+- Key API features: function/tool calling, configurable reasoning, structured outputs, live search tools, vision, voice and image/video generation.
+- Python example (OpenAI SDK):
+  from openai import OpenAI
+  client = OpenAI(api_key="YOUR_XAI_KEY", base_url="https://api.x.ai/v1")
+  r = client.chat.completions.create(model="grok-4.7",
+        messages=[{"role": "user", "content": "Explain RAG in simple words"}])
+  print(r.choices[0].message.content)
+  (Check docs for the exact model ID string.)
+
+== STRENGTHS ==
+- Flagship model at a cheap output price ($6/M output).
+- Real-time information from X when search is enabled - good for trends and news.
+- One platform for text, voice, images and video.
+- OpenAI/Anthropic SDK compatible - easy to switch.
+
+== WEAKNESSES / LIMITATIONS ==
+- 500K context is smaller than the 1M of Claude, DeepSeek and others.
+- Fewer model size options (no tiny budget tier like Luna or Haiku).
+- Personality and tone may not suit formal business use without prompting.
+- Smaller developer ecosystem than OpenAI or Google.
+
+== BEST FOR ==
+Social media / trend analysis apps, projects needing text + voice + image/video from one provider, cost-effective flagship reasoning.

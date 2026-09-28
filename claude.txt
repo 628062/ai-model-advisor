@@ -1,0 +1,63 @@
+CLAUDE (Anthropic)
+Data as of: 25 September 2026
+Official sources: https://platform.claude.com/docs/en/about-claude/pricing , https://docs.claude.com , https://www.anthropic.com
+
+== OVERVIEW ==
+Claude is the AI assistant made by Anthropic, an American AI safety and research company founded in 2021 by former OpenAI researchers (including Dario and Daniela Amodei). Claude was first released in March 2023.
+Claude is known for careful, well-written answers, strong coding and agentic abilities, long-context understanding and a focus on safety and honesty.
+Consumer access: claude.ai on web, desktop and mobile apps. Free plan with limits, plus paid plans (Pro, Max, Team, Enterprise). Other products: Claude Code (agentic coding tool for developers), Claude in Chrome, Claude for M365 and more. Developers use the Claude API (Claude Platform).
+Best known for: coding, long documents, writing quality, agents, safety.
+
+== CURRENT MODELS (API) ==
+Claude models come in tiers (from smallest to largest): Haiku, Sonnet, Opus, and the new top tier Fable/Mythos.
+1. Claude Fable 5.1 - top-tier (Mythos-class) model, most capable, with extra safety measures. Most expensive.
+2. Claude Opus 5.5 - powerful model for complex challenges, deep reasoning, advanced coding and agents.
+3. Claude Sonnet 5 - balanced model: strong quality with good speed and lower cost. Popular default for production apps.
+4. Claude Haiku 4.5 - smallest, fastest and cheapest Claude model; good for high-volume, low-latency tasks.
+Note: Claude Mythos 5.1 (same underlying model as Fable 5.1) is available only to selected trusted organizations under Anthropic's Project Glasswing, not to the general public.
+
+== COMPARISON OF CLAUDE'S OWN MODELS ==
+- Capability: Fable 5.1 > Opus 5.5 > Sonnet 5 > Haiku 4.5.
+- Price: Fable costs 2.5x Opus; Opus costs 2x Sonnet; Sonnet costs 2x Haiku.
+- Speed: Haiku fastest, Fable/Opus slower.
+- When to choose: Fable/Opus for the hardest reasoning and long agentic coding tasks; Sonnet for most apps; Haiku for simple, fast, cheap workloads like classification, routing, customer support.
+
+== API PRICING (per 1 million tokens, standard) ==
+| Model | Input | Output | Context window |
+| Claude Fable 5.1 | $10 | $50 | 1M tokens |
+| Claude Opus 5.5 | $4 | $20 | 1M tokens |
+| Claude Sonnet 5 | $2 | $10 | 1M tokens |
+| Claude Haiku 4.5 | $1 | $5 | smaller than 1M (check docs) |
+Older models still listed: Opus 5 ($5/$25), Opus 4.8 and 4.7 ($5/$25), Sonnet 4.6 and 4.5 ($3/$15), Haiku 3.5 ($0.80/$4, 200K context).
+Discounts and modifiers:
+- Batch processing: 50% cheaper.
+- Prompt caching reduces the cost of repeated context.
+- All Claude 4.6+ models include full 1 million token context at standard pricing.
+- Data residency: 1.1x price multiplier. Fast mode for Opus at premium pricing.
+
+== API BASICS ==
+- Get an API key from the Claude Console (platform.claude.com), set ANTHROPIC_API_KEY.
+- Official SDKs: Python (pip install anthropic), TypeScript, and others.
+- Main endpoint: Messages API.
+- Key API features: streaming, tool use (function calling), vision (image and PDF input), prompt caching, batch processing, extended thinking, structured outputs, citations, 1M token context.
+- Python example:
+  import anthropic
+  client = anthropic.Anthropic()
+  msg = client.messages.create(model="claude-sonnet-5", max_tokens=1024,
+        messages=[{"role": "user", "content": "Explain RAG in simple words"}])
+  print(msg.content[0].text)
+
+== STRENGTHS ==
+- Excellent at coding and agentic tasks (Claude Code is widely used by developers).
+- 1M token context on recent models at standard price - great for long documents and big codebases.
+- High-quality, natural writing; follows complex instructions well.
+- Strong safety focus.
+
+== WEAKNESSES / LIMITATIONS ==
+- No native image generation.
+- Top models (Fable, Opus) are costly for high-volume use.
+- Closed-source; cannot self-host.
+- Free consumer plan has usage limits.
+
+== BEST FOR ==
+Coding assistants and developer tools, analysis of long documents (contracts, research papers, codebases), AI agents, professional writing.

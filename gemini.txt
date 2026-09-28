@@ -1,0 +1,59 @@
+GEMINI (Google)
+Data as of: 25 September 2026
+Official sources: https://ai.google.dev/gemini-api/docs/pricing , https://ai.google.dev/gemini-api/docs , https://gemini.google.com
+
+== OVERVIEW ==
+Gemini is Google's family of AI models and also the name of its AI chatbot. It was built by Google DeepMind. Google launched its chatbot as "Bard" in March 2023 and renamed it to Gemini in February 2024.
+Gemini is deeply integrated with Google products: Search, Gmail, Docs, Drive, Android, YouTube and Google Cloud (Vertex AI).
+Consumer access: gemini.google.com, Gemini mobile app, and inside Android and Google Workspace. Free plan plus paid Google AI subscription plans.
+Best known for: natively multimodal (text, images, audio, video), very long context, Google ecosystem integration, and a generous free tier for developers.
+
+== CURRENT MODELS (API) ==
+1. Gemini 3.1 Pro (Preview) - Google's most capable model, built for multimodal understanding and agentic tasks. No free tier.
+2. Gemini 3.8 Flash - the newest and most intelligent Flash model, engineered for long-horizon software engineering. Free tier available.
+3. Gemini 3.7 Flash - high-speed model for everyday coding tasks. Free tier available.
+4. Gemini 3.6 Flash - previous-generation Flash balancing speed and multimodal abilities. Free tier available.
+5. Gemini 3.5 Flash - earlier Flash model for high-throughput workloads. Free tier available.
+6. Gemini 3.8 Live - low-latency audio-to-audio model for real-time voice agents.
+
+== COMPARISON OF GEMINI'S OWN MODELS ==
+- Pro vs Flash: Pro is more capable for complex reasoning and multimodal understanding; Flash models are faster and much cheaper.
+- Newer Flash (3.8) is smarter than older Flash models at the same price as 3.6/3.7.
+- Gemini 3.5 Flash is actually more expensive than newer Flash models, so newer Flash is better value.
+- Live model is special: for voice conversations in real time.
+- When to choose: Pro for hard reasoning and agents; 3.8 Flash as the best default for most apps and coding; Live for voice assistants.
+
+== API PRICING (per 1 million tokens) ==
+| Model | Input | Output | Free tier |
+| Gemini 3.1 Pro Preview | $2 (up to 200K prompt) / $4 (above 200K) | $12 / $18 | No |
+| Gemini 3.8 Flash | $0.75 | $3.75 | Yes |
+| Gemini 3.7 Flash | $0.75 | $3.75 | Yes |
+| Gemini 3.6 Flash | $0.75 | $3.75 | Yes |
+| Gemini 3.5 Flash | $1.50 | $9.00 | Yes |
+| Gemini 3.8 Live | $0.75 text / $3.00 audio | $4.50 text / $12.00 audio | Text free tier |
+The free tier has rate limits and is meant for testing and small projects - very useful for students.
+
+== API BASICS ==
+- Get a free API key from Google AI Studio (aistudio.google.com). Enterprise users can use Vertex AI on Google Cloud.
+- Official SDK: Google Gen AI SDK - Python (pip install google-genai), JavaScript, Go, Java.
+- Key API features: multimodal input (text, image, audio, video, PDF), long context, function calling, structured JSON output, grounding with Google Search, code execution, context caching, batch mode, Live API for real-time voice.
+- Python example:
+  from google import genai
+  client = genai.Client()
+  response = client.models.generate_content(model="gemini-3.8-flash", contents="Explain RAG in simple words")
+  print(response.text)
+
+== STRENGTHS ==
+- Generous free tier - best for students and prototypes.
+- Natively multimodal, including video and audio understanding.
+- Grounding with Google Search for up-to-date answers.
+- Deep integration with Google Workspace and Android.
+- Flash models give strong quality at low cost.
+
+== WEAKNESSES / LIMITATIONS ==
+- Pro model is in preview and has no free tier.
+- Pricing for Pro increases for prompts above 200K tokens.
+- Free tier data may be used to improve Google products (check terms), so avoid sensitive data on free tier.
+
+== BEST FOR ==
+Students and beginners (free API), multimodal apps (images, video, audio), voice agents, apps that need Google Search grounding, Google Workspace users.

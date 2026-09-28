@@ -1,0 +1,58 @@
+CHATGPT (OpenAI)
+Data as of: 25 September 2026
+Official sources: https://developers.openai.com/api/docs/pricing , https://platform.openai.com/docs
+
+== OVERVIEW ==
+ChatGPT is the AI chatbot made by OpenAI, an American AI company founded in 2015 and based in San Francisco. ChatGPT was launched in November 2022 and became the fastest-growing consumer app of its time, starting the modern generative AI boom.
+ChatGPT is a general-purpose assistant: writing, coding, research, data analysis, image understanding and generation, voice conversations and agent-style tasks.
+Consumer access: web (chatgpt.com), Android, iOS, desktop apps. There is a free plan with limited usage, plus paid subscription plans for individuals, teams and enterprises (check chatgpt.com/pricing for current prices).
+Best known for: huge user base, strong all-round quality, rich ecosystem (custom GPTs, plugins/apps, integrations), multimodal features.
+
+== CURRENT MODELS (API) ==
+The current flagship family is GPT-6, which comes in three sizes:
+1. GPT-6 Astra - the most powerful, top-tier model for the hardest reasoning, coding and agentic tasks. Most expensive.
+2. GPT-6 Sol - the balanced mid-tier model; good quality at a much lower price. Good default for most apps.
+3. GPT-6 Luna - the smallest, fastest and cheapest model; best for high-volume, simple tasks like classification, extraction, chat support.
+
+== COMPARISON OF OPENAI'S OWN MODELS ==
+- Quality: Astra > Sol > Luna.
+- Price: Astra is 5x the price of Sol, and Sol is 20x the price of Luna.
+- Speed: Luna is the fastest, Astra the slowest.
+- When to choose: Astra for complex coding/research agents; Sol for most production chatbots and assistants; Luna for cost-sensitive, large-scale or simple workloads.
+
+== API PRICING (per 1 million tokens, standard) ==
+| Model | Input | Output | Long-context input / output |
+| GPT-6 Astra | $10 | $50 | $20 / $75 |
+| GPT-6 Sol | $2 | $10 | $4 / $15 |
+| GPT-6 Luna | $0.10 | $0.50 | $0.20 / $0.75 |
+Discounts and modifiers:
+- Batch API: 50% cheaper (e.g., Astra becomes $5 input / $25 output) for non-urgent jobs.
+- Cached input tokens cost 90% less than normal input.
+- Data residency (regional processing) endpoints cost 10% extra.
+- Fast mode doubles the standard price.
+
+== API BASICS ==
+- Get an API key from platform.openai.com, set it as the OPENAI_API_KEY environment variable.
+- Official SDKs: Python (pip install openai) and JavaScript/TypeScript (npm install openai).
+- Main endpoint: the Responses API (newer, recommended) and Chat Completions API (older, widely used).
+- Key API features: streaming, function/tool calling, structured JSON outputs, vision (image input), image generation, speech-to-text and text-to-speech, embeddings, batch processing, prompt caching, fine-tuning.
+- Python example:
+  from openai import OpenAI
+  client = OpenAI()
+  response = client.responses.create(model="gpt-6-sol", input="Explain RAG in simple words")
+  print(response.output_text)
+  (Check the docs for the exact model ID string.)
+
+== STRENGTHS ==
+- Very strong all-round model family with 3 clear price tiers.
+- Largest ecosystem, tutorials and community support; easiest to find help.
+- Cheapest tiny model (Luna at $0.10 input) among the big US labs.
+- Rich multimodal tools (images, voice) in one platform.
+
+== WEAKNESSES / LIMITATIONS ==
+- Top model (Astra) is expensive, especially output tokens ($50/M).
+- Closed-source; cannot self-host the flagship models.
+- Free consumer plan has usage limits.
+
+== BEST FOR ==
+General-purpose chatbots, startups wanting one provider for everything, beginners (most tutorials), high-volume cheap tasks (Luna).
