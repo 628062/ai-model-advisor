@@ -1,0 +1,56 @@
+OVERALL COMPARISON OF 6 AI CHATBOTS: ChatGPT, Claude, Gemini, DeepSeek, Grok, Perplexity
+Data as of: 25 September 2026 (prices are standard API prices in USD per 1 million tokens)
+
+== QUICK SUMMARY TABLE ==
+| Chatbot | Company (country) | Flagship API model | Flagship price (input/output) | Cheapest API model | Cheapest price (input/output) | Max context |
+| ChatGPT | OpenAI (USA) | GPT-6 Astra | $10 / $50 | GPT-6 Luna | $0.10 / $0.50 | long context supported |
+| Claude | Anthropic (USA) | Claude Fable 5.1 (Opus 5.5 below it) | $10 / $50 (Opus: $4 / $20) | Claude Haiku 4.5 | $1 / $5 | 1M tokens |
+| Gemini | Google (USA) | Gemini 3.1 Pro Preview | $2 / $12 | Gemini 3.8 Flash | $0.75 / $3.75 (free tier) | long context |
+| DeepSeek | DeepSeek (China) | deepseek-v4-pro | $0.66-1.32 / $1.98-3.96 | deepseek-flash | $0.15-0.30 / $0.60-1.20 | 1M tokens |
+| Grok | xAI (USA) | Grok 4.7 | $2 / $6 | Grok 4.7 (single main model) | $2 / $6 | 500K tokens |
+| Perplexity | Perplexity (USA) | Sonar Pro / Sonar Reasoning Pro | $3 / $15 + request fee | Sonar | $1 / $1 + $5-12 per 1K requests | - |
+
+== WHO IS BEST FOR WHAT ==
+- Best free API for students and prototypes: Gemini (free tier on Flash models).
+- Cheapest paid API overall: GPT-6 Luna (lowest list price) and DeepSeek Flash (very cheap, with cache and off-peak discounts).
+- Best for coding and AI agents: Claude (Opus 5.5 / Sonnet 5, Claude Code); also GPT-6 Astra, Gemini 3.8 Flash and Grok 4.7 are strong.
+- Best for long documents: Claude and DeepSeek (1M context); Gemini also handles long context.
+- Best for real-time web answers with citations: Perplexity (built-in search). Gemini has Google Search grounding; Grok has live X data.
+- Best for multimodal (image, video, audio understanding): Gemini. ChatGPT and Grok also offer image/voice features; Grok has video generation.
+- Best for voice agents: Gemini 3.8 Live, xAI Voice API, OpenAI voice features.
+- Best for privacy / self-hosting: DeepSeek (open-weight models can be self-hosted).
+- Best ecosystem and tutorials for beginners: ChatGPT/OpenAI.
+- Best for Google Workspace users: Gemini. Best for X/Twitter trend analysis: Grok.
+- Best value flagship for long outputs: Grok 4.7 ($6 per 1M output).
+
+== PRICE RANKING OF CHEAPEST MODELS (input price per 1M tokens) ==
+1. GPT-6 Luna $0.10 (output $0.50) - lowest list price for input
+2. DeepSeek Flash ~ $0.15-0.30 (cache hit almost free, off-peak 50% off)
+3. Gemini 3.8 Flash $0.75 (free tier available)
+4. Claude Haiku 4.5 $1
+5. Perplexity Sonar $1 (+ per-request search fee)
+6. Grok 4.7 $2 (no smaller tier)
+(Note: for GPT-6 Luna vs DeepSeek Flash, Luna has lower input price, DeepSeek has cache discounts and off-peak 50% discount; exact cheapest depends on usage.)
+
+== API COMPATIBILITY ==
+- DeepSeek, Grok and (older) Perplexity Sonar APIs are OpenAI-compatible: same OpenAI Python SDK, only base_url, key and model name change. Grok is also Anthropic-SDK compatible.
+- OpenAI uses the Responses API / Chat Completions; Claude uses the Messages API; Gemini uses the Google Gen AI SDK.
+- Batch processing with 50% discount: OpenAI, Claude (and Gemini batch mode).
+- Prompt/context caching: OpenAI (90% off cached input), Claude, Gemini, DeepSeek (automatic).
+
+== COST EXAMPLE ==
+Example: a chatbot with 1,000 users, each sending 20 messages per day, about 500 input tokens + 300 output tokens per message, for 30 days.
+Total = 1,000 x 20 x 30 = 600,000 messages per month = 300M input tokens + 180M output tokens.
+Formula: cost = (input tokens / 1M x input price) + (output tokens / 1M x output price).
+- GPT-6 Luna: 300 x $0.10 + 180 x $0.50 = $30 + $90 = $120 per month
+- Gemini 3.8 Flash: 300 x $0.75 + 180 x $3.75 = $225 + $675 = $900 per month
+- Claude Haiku 4.5: 300 x $1 + 180 x $5 = $300 + $900 = $1,200 per month
+- Claude Sonnet 5 / GPT-6 Sol: 300 x $2 + 180 x $10 = $600 + $1,800 = $2,400 per month
+- Grok 4.7: 300 x $2 + 180 x $6 = $600 + $1,080 = $1,680 per month
+- DeepSeek Flash (peak price): 300 x $0.30 + 180 x $1.20 = $90 + $216 = $306 per month (off-peak about half)
+Output tokens usually cost more than input, so long answers raise the bill fastest.
+
+== IMPORTANT NOTES ==
+- AI models and prices change very often. Always verify on the official pricing pages before building a product.
+- Perplexity's Sonar Chat Completions API is moving to the new Agent API (old endpoint supported until 27 September 2026).
+- Claude Mythos 5.1 is not publicly available (restricted to selected organizations).

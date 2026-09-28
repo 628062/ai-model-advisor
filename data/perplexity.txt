@@ -1,0 +1,51 @@
+PERPLEXITY
+Data as of: 25 September 2026
+Official sources: https://docs.perplexity.ai/getting-started/pricing , https://docs.perplexity.ai , https://www.perplexity.ai
+
+== OVERVIEW ==
+Perplexity is an American AI company founded in 2022 (San Francisco). Its product is an "AI answer engine": instead of a list of links like Google, it searches the web in real time and gives a direct answer with citations (source links).
+Perplexity uses its own Sonar models and also lets paid users choose models from other companies (like GPT, Claude, Gemini).
+Consumer access: perplexity.ai, mobile apps, desktop apps and the Comet browser. Free plan plus paid Pro/Max and Enterprise plans.
+Best known for: web search with citations, up-to-date answers, research (Deep Research mode).
+
+== CURRENT MODELS (API) - Sonar family ==
+1. Sonar - lightweight, general-purpose model with built-in web search. Cheapest.
+2. Sonar Pro - stronger model for complex queries, more searches and more citations.
+3. Sonar Reasoning Pro - extended reasoning (thinks step by step) for analytical tasks, with web search.
+4. Sonar Deep Research - does many searches and produces a comprehensive research report with citations and visible reasoning.
+IMPORTANT UPDATE: Perplexity's "Sonar Chat Completions" API is becoming the "Agent API". Sonar through the old Chat Completions endpoint is supported until 27 September 2026, so new projects should use the Agent API (check docs).
+
+== COMPARISON OF PERPLEXITY'S OWN MODELS ==
+- Sonar: fast and cheap, for simple questions with search.
+- Sonar Pro: better answers for complex queries, but output is 15x more expensive than Sonar.
+- Sonar Reasoning Pro: best when the question needs analysis/logic plus search.
+- Sonar Deep Research: slowest and most thorough, for full research reports.
+
+== API PRICING ==
+Perplexity charges for tokens AND a request fee (because every request runs a web search).
+| Model | Input / 1M | Output / 1M | Request fee per 1,000 requests |
+| Sonar | $1 | $1 | $5 - $12 (depends on search context size: low/medium/high) |
+| Sonar Pro | $3 | $15 | $6 - $14 |
+| Sonar Reasoning Pro | $2 | $8 | $6 - $14 |
+| Sonar Deep Research | $2 | $8 | plus citation tokens $2/1M, reasoning tokens $3/1M, search queries $5 per 1,000 |
+
+== API BASICS ==
+- Get an API key from the Perplexity API settings page.
+- The Sonar API was OpenAI Chat Completions-compatible (use OpenAI SDK with base_url https://api.perplexity.ai). New Agent API replaces it - check docs.
+- Answers come with a list of citations/search results automatically.
+- Key API features: real-time web search built in, citations, search context size control (low/medium/high), domain and date filters, reasoning models, deep research.
+
+== STRENGTHS ==
+- Always up-to-date: searches the live web for every answer - no knowledge cutoff problem.
+- Citations come built-in, which reduces hallucination risk and builds trust.
+- No need to build your own search/RAG pipeline for web data.
+- Deep Research for long reports.
+
+== WEAKNESSES / LIMITATIONS ==
+- Extra per-request fee makes costs harder to predict at high volume.
+- Not the best choice for pure coding or creative tasks without search.
+- API transition (Chat Completions to Agent API) means older tutorials may be outdated.
+- Relies on web sources, so answer quality depends on the sources found.
+
+== BEST FOR ==
+Research assistants, news and fact-checking apps, any app that needs current information with sources, students doing research.
